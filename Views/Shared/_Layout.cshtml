@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Attendance System</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    Attendance System
+                </a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    @if (ViewBag.ClassId != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Student" asp-action="Create" asp-route-classId="@ViewBag.ClassId">Add Student</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Class" asp-action="Create">Add Class</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container">
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Success"]
+            </div>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-error">
+                @TempData["Error"]
+            </div>
+        }
+        
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 - Attendance System</p>
+        </div>
+    </footer>
+    
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

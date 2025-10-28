@@ -1,0 +1,43 @@
+@model AttendanceSystem118.Models.ViewModels.ClassViewModel
+
+@{
+    ViewData["Title"] = "Add New Class";
+}
+
+<div class="form-container">
+    <div class="form-header">
+        <h1>Add New Class</h1>
+        <p>Create a new class to start managing students and attendance</p>
+    </div>
+    
+    <form asp-action="Create" method="post" class="form">
+        <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+        
+        <div class="form-group">
+            <label asp-for="Name">Class Name</label>
+            <input asp-for="Name" class="form-control" placeholder="e.g., Computer Science A" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="Subject">Subject</label>
+            <input asp-for="Subject" class="form-control" placeholder="e.g., Computer Science" />
+            <span asp-validation-for="Subject" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="Section">Section (Optional)</label>
+            <input asp-for="Section" class="form-control" placeholder="e.g., A, B, Morning" />
+            <span asp-validation-for="Section" class="text-danger"></span>
+        </div>
+        
+        <div class="form-actions">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Create Class</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

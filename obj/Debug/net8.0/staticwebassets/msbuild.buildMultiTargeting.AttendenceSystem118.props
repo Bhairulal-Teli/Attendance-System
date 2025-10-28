@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\AttendenceSystem118.props" />
+</Project>
